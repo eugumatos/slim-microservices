@@ -9,18 +9,13 @@ use Slim\Factory\AppFactory;
 use Slim\Factory\ServerRequestCreatorFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
-require '../src/Models/Users.php';  
+require '../src/Models/User.php';  
 
 // Register routes
 require __DIR__ . '/../app/routes.php';
 
 // Run app
 $app->run();
-
-$container = $app->getContainer();
-$capsule = new Illuminate\Database\Capsule\Manager;
-$capsule->addConnection($container->get('settings')['db']);
-$capsule->bootEloquent();
 
 // Instantiate PHP-DI ContainerBuilder
 $containerBuilder = new ContainerBuilder();
